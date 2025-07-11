@@ -34,7 +34,7 @@ public class CustomerController {
     @GetMapping("/{id}")
     public ResponseEntity<Customer> buscarCliente(@PathVariable Integer id){
         try{
-            Customer customer = customerService.findbyId(id);
+            Customer customer = customerService.findById(id);
             return ResponseEntity.ok(customer);
         }catch (Exception e){
             return ResponseEntity.notFound().build();
@@ -44,7 +44,7 @@ public class CustomerController {
     @PutMapping("/{id}")
     public ResponseEntity<Customer> actualizarCliente(@PathVariable Integer id, @RequestBody Customer customer){
         try {
-            Customer cust = customerService.findbyId(id);
+            Customer cust = customerService.findById(id);
             cust.setId(id);
             cust.setRun(customer.getRun());
             cust.setNombre(customer.getNombre());
@@ -62,7 +62,7 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarCliente(@PathVariable Long id){
         try {
-            customerService.delet(id);
+            customerService.deleteById(id);
             return ResponseEntity.noContent().build();
 
         } catch (Exception e) {

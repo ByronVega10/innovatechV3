@@ -55,6 +55,7 @@ public class ProductDataLoader implements CommandLineRunner{
             product.setNombre(nombre);
             product.setDescripcion(faker.lorem().sentence());
             product.setPrecio(faker.number().numberBetween(20000, 2000000));
+            product.setStock(faker.number().numberBetween(20, 100));
             productRepository.save(product);
         }
     }

@@ -34,7 +34,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<Product> buscarProducto(@PathVariable Integer id){
         try{
-            Product product = productService.findbyId(id);
+            Product product = productService.findById(id);
             return ResponseEntity.ok(product);
         }catch (Exception e){
             return ResponseEntity.notFound().build();
@@ -44,7 +44,7 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<Product> actualizarProducto(@PathVariable Integer id, @RequestBody Product product){
         try {
-            Product prod = productService.findbyId(id);
+            Product prod = productService.findById(id);
             prod.setId(product.getId());
             prod.setNombre(product.getNombre());
             prod.setDescripcion(product.getDescripcion());
@@ -62,7 +62,7 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarProducto(@PathVariable Long id){
         try {
-            productService.delet(id);
+            productService.deleteById(id);
             return ResponseEntity.noContent().build();
 
         } catch (Exception e) {
