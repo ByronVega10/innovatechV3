@@ -1,14 +1,16 @@
 package innovatech.cart.v3.full.service;
 
 
+import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import innovatech.cart.v3.full.repository.CartRepository;
 import innovatech.cart.v3.full.model.CartItem;
-import innovatech.cart.v3.full.dto.CartDTO;
+import innovatech.cart.v3.full.client.ProductClient;
 import innovatech.cart.v3.full.dto.ProductDTO;
 import innovatech.cart.v3.full.model.Cart;
 
@@ -19,14 +21,26 @@ public class CartService {
     private CartRepository cartRepository;
 
     @Autowired
+    private ProductClient productClient;
+
+    @Autowired
     private RestTemplate restTemplate;
 
-    public ProductDTO getProductById(Integer productId){
-        return restTemplate.getForObject("http://localhost:8082/product/" + productId, ProductDTO.class);
+
+    public List<Cart> findAll(){
+        return cartRepository.findAll();
     }
 
-    //Obtener carrito del cliente o crearlo si no existe
-    public Cart getOrCreateCartEntity(Integer customerId){
+    public Cart findById(Integer id){
+        return cartRepository.findById(id).get();
+    }
+
+    public Optional<Cart> findByCustomerId(Integer customerId) {
+        return cartRepository.findByCustomerId(customerId);
+    }
+
+    //Obtener carrito del cliente
+    public Cart getCartEntity(Integer customerId){
         return cartRepository.findByCustomerId(customerId)
                 .orElseGet(() -> {
                     Cart newCart = new Cart();
@@ -36,40 +50,41 @@ public class CartService {
     }
 
     //Agrgar Producto al carrito
-    public void addProduct(Integer customerId, Integer productId, int quantity){
-        Cart cart = getOrCreateCartEntity(customerId);
-        Optional<CartItem> itemOpt = cart.getItems().stream()
-            .filter(item -> item.getProductId().equals(productId)).findFirst();
+    public Cart addProductToCart(Integer customerId, Integer productId, int quantity){
+        Cart cart = cartRepository.findByCustomerId(customerId)
+                    .orElseThrow(() -> new RuntimeException("Carrito no Encontrado"));
 
-        if (itemOpt.isPresent()){
-            CartItem item = itemOpt.get();
-            item.setQuantity(item.getQuantity()+quantity);
-        
-        } else {
-            CartItem newItem = new CartItem();
-            newItem.setProductId(productId);
-            newItem.setQuantity(quantity);
-            cart.getItems().add(newItem);
+        ProductDTO product = productClient.getProductById(productId);
+        if (product == null) {
+            throw new RuntimeException("Producto no Encontrado");
         }
+
+        CartItem cartItem = new CartItem();
+        cartItem.setProductId(productId);
+        cartItem.setQuantity(quantity);
+        cartItem.setCart(cart);
+
+        cart.getItems().add(cartItem);
+
+        return cartRepository.save(cart);
     }
 
     //Eliminar producto del carrito
-    public void removeProduct(Integer customerId, Integer productId){
-        Cart cart = getOrCreateCartEntity(customerId);
+    public Cart removeProduct(Integer customerId, Integer productId){
+        Cart cart = cartRepository.findByCustomerId(customerId)
+                    .orElseThrow(() -> new RuntimeException("Carrito no Encontrado"));
+
         cart.getItems().removeIf(item -> item.getProductId().equals(productId));
-        cartRepository.save(cart);
+        return cartRepository.save(cart);
     }
 
     //Vaciar carrito
-    public void clearCart(Integer customerId){
-        Cart cart = getOrCreateCartEntity(customerId);
+    public Cart clearCart(Integer customerId){
+        Cart cart = cartRepository.findByCustomerId(customerId)
+                    .orElseThrow(() -> new RuntimeException("Carrito no Encontrado"));
+                    
         cart.getItems().clear();
-        cartRepository.save(cart);
+        return cartRepository.save(cart);
     }
 
-    // Obtener carrito
-    public CartDTO getOrCreateCart(Integer customerId) {
-        Cart cart = getOrCreateCartEntity(customerId);
-        return new CartDTO(cart); // O usa tu mapper
-}
 }

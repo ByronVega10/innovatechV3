@@ -5,10 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import innovatech.product.v3.full.model.Product;
 import innovatech.product.v3.full.repository.ProductRepository;
-import jakarta.transaction.Transactional;
 
 @Service
-@Transactional
 public class ProductService {
 
     @Autowired
