@@ -55,6 +55,10 @@ public class CartService {
                     .orElseThrow(() -> new RuntimeException("Carrito no Encontrado"));
 
         ProductDTO product = productClient.getProductById(productId);
+        
+        if (customerId == null || productId == null || quantity <= 0) {
+            throw new IllegalArgumentException("Parámetros inválidos");}
+
         if (product == null) {
             throw new RuntimeException("Producto no Encontrado");
         }

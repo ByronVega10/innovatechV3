@@ -10,5 +10,5 @@ import innovatech.cart.v3.full.dto.ProductDTO;
 public interface ProductClient {
     
     @GetMapping("/product/{id}")
-    ProductDTO getProductById(@PathVariable("id")Integer id);
+    ProductDTO getProductById(@PathVariable Integer id);
 }

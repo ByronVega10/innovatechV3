@@ -1,0 +1,947 @@
+{
+	"info": {
+		"_postman_id": "8959ac44-91f1-48cd-a299-dbd1c9216a84",
+		"name": "Innovatech Postman Collection V3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44800085",
+		"_collection_link": "https://byronvega-9217394.postman.co/workspace/Byron-Vega's-Workspace~8e84b8b0-cfa7-447f-8a57-fd909206db49/collection/44800085-8959ac44-91f1-48cd-a299-dbd1c9216a84?action=share&source=collection_link&creator=44800085"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Rest Normal",
+					"item": [
+						{
+							"name": "http://localhost:8082/apiv3/productos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/apiv3/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/productos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 51,  \r\n  \"nombre\": \"Laptop Lenovo\",\r\n  \"descripcion\": \"Laptop ultraliviana con Intel i7 y 16GB RAM\",\r\n  \"precio\": 899.999,\r\n  \"stock\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/apiv3/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/productos/1",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/apiv3/productos/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"productos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/productos/28",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 28,\r\n    \"nombre\": \"iPhone 14 Pro Max\",\r\n    \"descripcion\": \"Smartphone con arquitectura Apple\",\r\n    \"precio\": 999999,\r\n    \"stock\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/apiv3/productos/28",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"productos",
+										"28"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/productos/20",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/apiv3/productos/20",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"productos",
+										"20"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "With Hateoas",
+					"item": [
+						{
+							"name": "http://localhost:8082/apiv3/v2/productos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/apiv3/v2/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"v2",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/v2/productos/17",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/apiv3/v2/productos/17",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"v2",
+										"productos",
+										"17"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/v2/productos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 51,\r\n  \"nombre\": \"Smartphone Samsung Galaxy S25 Ultra\",\r\n  \"descripcion\": \"Pantalla AMOLED, 256GB, Cámara triple\",\r\n  \"precio\": 1200999,\r\n  \"stock\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/apiv3/v2/productos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"v2",
+										"productos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/v2/productos/9",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 9,\r\n    \"nombre\": \"LG OLED TV 100\",\r\n    \"descripcion\": \"Televisor OLED marca LG de 100 pulgadas, un cine en casa\",\r\n    \"precio\": 2599990,\r\n    \"stock\": 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/apiv3/v2/productos/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"v2",
+										"productos",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8082/apiv3/v2/productos/38",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/apiv3/v2/productos/38",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"apiv3",
+										"v2",
+										"productos",
+										"38"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Rest Normal",
+					"item": [
+						{
+							"name": "http://localhost:8081/apiv3/clientes",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/apiv3/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/clientes",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"id\": 51,\r\n    \"run\": \"21.745.789-0\",\r\n    \"nombre\": \"Byron\",\r\n    \"apellido\": \"Vega\",\r\n    \"correo\": \"byro.vega@duocuc.cl\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/apiv3/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/clientes/5",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/apiv3/clientes/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"clientes",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/clientes/30",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 30,\r\n    \"run\": \"22.733.295-5\",\r\n    \"nombre\": \"Diego\",\r\n    \"apellido\": \"Gonzalez\",\r\n    \"correo\": \"diega.gonzalez@duocuc.cl\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/apiv3/clientes/30",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"clientes",
+										"30"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/clientes/22",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/apiv3/clientes/22",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"clientes",
+										"22"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "WIth Hateoas",
+					"item": [
+						{
+							"name": "http://localhost:8081/apiv3/v2/clientes",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/apiv3/v2/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"v2",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/v2/clientes/2",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/apiv3/v2/clientes/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"v2",
+										"clientes",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/v2/clientes",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 52,\r\n    \"run\": \"12.182.278-4\",\r\n    \"nombre\": \"Marcela\",\r\n    \"apellido\": \"Parra\",\r\n    \"correo\": \"marce.parra15@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/apiv3/v2/clientes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"v2",
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/v2/clientes/9",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 9,\r\n    \"run\": \"696-99-696-9\",\r\n    \"nombre\": \"Vincenzo\",\r\n    \"apellido\": \"Cassano\",\r\n    \"correo\": \"vincenzo.cassano@netflix.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/apiv3/v2/clientes/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"v2",
+										"clientes",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8081/apiv3/v2/clientes/37",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/apiv3/v2/clientes/37",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"apiv3",
+										"v2",
+										"clientes",
+										"37"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Rest Normal",
+					"item": [
+						{
+							"name": "http://localhost:8083/apiv3/carritos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/apiv3/carritos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"carritos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/carritos/clientes/2",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/apiv3/carritos/clientes/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"carritos",
+										"clientes",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/carritos/clientes/2/add",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"productId\": 5,\r\n    \"quantity\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/apiv3/carritos/clientes/2/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"carritos",
+										"clientes",
+										"2",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/carritos/clientes/5/remove/5",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/apiv3/carritos/clientes/5/remove/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"carritos",
+										"clientes",
+										"5",
+										"remove",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/carritos/5/clear",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/apiv3/carritos/5/clear",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"carritos",
+										"5",
+										"clear"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "With Hateoas",
+					"item": [
+						{
+							"name": "http://localhost:8083/apiv3/v2/carritos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"productId\": 101,\r\n  \"quantity\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/apiv3/v2/carritos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"v2",
+										"carritos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/v2/carritos/20",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/apiv3/v2/carritos/20",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"v2",
+										"carritos",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/v2/carritos/clientes/21",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": 1,\r\n    \"quantity\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/apiv3/v2/carritos/clientes/21",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"v2",
+										"carritos",
+										"clientes",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/v2/carritos/clientes/21",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\":1,\r\n    \"quantity\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/apiv3/v2/carritos/clientes/21/remove/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"v2",
+										"carritos",
+										"clientes",
+										"21",
+										"remove",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/v2/carritos/clientes/21/add",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\":1,\r\n    \"quantity\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/apiv3/v2/carritos/clientes/21/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"v2",
+										"carritos",
+										"clientes",
+										"21",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8083/apiv3/v2/carritos/2/vaciar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\":1,\r\n    \"quantity\":1\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8083/apiv3/v2/carritos/2/vaciar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"apiv3",
+										"v2",
+										"carritos",
+										"2",
+										"vaciar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

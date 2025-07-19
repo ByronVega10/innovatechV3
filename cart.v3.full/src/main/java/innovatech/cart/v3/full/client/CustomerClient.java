@@ -4,8 +4,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "clientes-microservice", url = "http://localhost:8081")
+import innovatech.cart.v3.full.dto.CustomerDTO;
+
+@FeignClient(name = "customer-service", url = "http://localhost:8081")
 public interface CustomerClient {
     @GetMapping("customer/{id}/exists")
-    Boolean existsById(@PathVariable("id")Integer customerId);
+    CustomerDTO getCustomerById(@PathVariable Integer id);
 }
