@@ -90,7 +90,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "204", description = "Cliente eliminado exitosamente"),
             @ApiResponse(responseCode = "404", description = "Cliente no encontrado")
             }) 
-    public ResponseEntity<?> eliminarCliente(@PathVariable Long id){
+    public ResponseEntity<?> eliminarCliente(@PathVariable Integer id){
         try {
             customerService.deleteById(id);
             return ResponseEntity.noContent().build();

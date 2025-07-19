@@ -16,7 +16,17 @@ public class CartModelAssembler implements RepresentationModelAssembler<Cart, En
     @Override
     public EntityModel<Cart> toModel(Cart cart){
         return EntityModel.of(cart,
+                
                 linkTo(methodOn(CartControllerV2.class).getCart(cart.getId())).withSelfRel(),
-                linkTo(methodOn(CartControllerV2.class).getAllCarts()).withRel("productos"));
-    }           
+                linkTo(methodOn(CartControllerV2.class).getAllCarts()).withRel("carritos"),
+                linkTo(methodOn(CartControllerV2.class).getCartByCustomerId(cart.getCustomerId())).withRel("carritoDeCliente"),
+                linkTo(methodOn(CartControllerV2.class).clearCart(cart.getCustomerId())).withRel("vaciar"),
+                
+                linkTo(methodOn(CartControllerV2.class)
+                    .addProductToCart(cart.getCustomerId(), null)).withRel("agregarProducto")
+
+
+        );
+    }
 }
+              

@@ -40,13 +40,13 @@ class CustomerServiceTest {
     void testFindByIdFound(){
         Customer customer = new Customer();
         customer.setId(1);
-        when(customerRepository.findById(1L)).thenReturn(Optional.of(customer));
+        when(customerRepository.findById(1)).thenReturn(Optional.of(customer));
 
         Customer result = customerService.findById(1);
 
         assertNotNull(result);
         assertEquals(1, result.getId());
-        verify(customerRepository).findById(1L);
+        verify(customerRepository).findById(1);
     }
 
     @Test
@@ -62,7 +62,7 @@ class CustomerServiceTest {
 
     @Test
     void testDeletebyId(){
-        long id = 49;
+        Integer id = 49;
 
         customerService.deleteById(id);
 

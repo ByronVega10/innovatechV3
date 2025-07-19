@@ -38,13 +38,13 @@ class ProductServiceTest {
     void testFindByIdFound(){
         Product product = new Product();
         product.setId(1);
-        when(productRepository.findById(1L)).thenReturn(Optional.of(product));
+        when(productRepository.findById(1)).thenReturn(Optional.of(product));
 
         Product result = productService.findById(1);
 
         assertNotNull(result);
         assertEquals(1, result.getId());
-        verify(productRepository).findById(1L);
+        verify(productRepository).findById(1);
     }
 
     @Test
@@ -60,7 +60,7 @@ class ProductServiceTest {
 
     @Test
     void testDeletebyId(){
-        long id = 49;
+        Integer id = 49;
 
         productService.deleteById(id);
 

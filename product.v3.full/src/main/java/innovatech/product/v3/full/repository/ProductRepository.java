@@ -6,9 +6,8 @@ import org.springframework.stereotype.Repository;
 import innovatech.product.v3.full.model.Product;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long>{
+public interface ProductRepository extends JpaRepository<Product, Integer>{
 
-    List<Product> findById(Integer id);
 
     Product findByNombre(String nombre);
 

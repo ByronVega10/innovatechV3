@@ -92,7 +92,7 @@ public class ProductController {
             @ApiResponse(responseCode = "204", description = "Producto eliminado exitosamente"),
             @ApiResponse(responseCode = "404", description = "Producto no encontrado")
             })       
-    public ResponseEntity<?> eliminarProducto(@PathVariable Long id){
+    public ResponseEntity<?> eliminarProducto(@PathVariable Integer id){
         try {
             productService.deleteById(id);
             return ResponseEntity.noContent().build();

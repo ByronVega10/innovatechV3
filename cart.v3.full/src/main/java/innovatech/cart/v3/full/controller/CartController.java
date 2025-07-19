@@ -13,7 +13,9 @@ import innovatech.cart.v3.full.model.Cart;
 import innovatech.cart.v3.full.repository.CartRepository;
 import innovatech.cart.v3.full.service.CartService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,48 +34,91 @@ public class CartController {
     @Autowired
     private CartRepository cartRepository;
 
+
+    //accion
     @GetMapping
-    @Operation(summary = "Listar todos los carritos", description = "Lista una lista de todos los carritos")
+    //comentario
+    @Operation(
+        summary = "Listar todos los carritos", 
+        description = "Lista una lista de todos los carritos")
+    //logica
     public ResponseEntity<List<Cart>> listarProducto(){
         List<Cart> carts = cartService.findAll();
         if (carts.isEmpty()){
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(carts); 
+            return ResponseEntity.ok(carts); 
     }
 
 
-    // Obtener el carrito de un cliente
+    //accion
     @GetMapping("/clientes/{customerId}")
-    public ResponseEntity<Cart> getCartByCustomerId(@PathVariable Integer customerId){
-        Optional<Cart> cart = cartRepository.findByCustomerId(customerId);
-        return cart.map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+    //comentario
+    @Operation(
+        summary = "Obtener el carrito de un cliente",
+        description = "Busca y retorna el carrito asociado al ID del cliente.",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Carrito encontrado"),
+            @ApiResponse(responseCode = "404", description = "Carrito no encontrado")})
+    //logica
+    public ResponseEntity<Cart> getCartByCustomerId(
+        @Parameter(description = "ID del cliente",required = true)
+        @PathVariable Integer customerId){
+            
+            Optional<Cart> cart = cartRepository.findByCustomerId(customerId);
+            return cart.map(ResponseEntity::ok)
+                       .orElse(ResponseEntity.notFound().build());
     }
 
-    // Agregar producto al carrito
+
+    //accion
     @PostMapping("/clientes/{customerId}/add")
+    //comentario
+    @Operation(
+        summary = "Agregar producto al carrito",
+        description = "Agrega un producto (existente) al carrito del cliente indicado y devuelve el carrito actualizado.")
+    //logica
     public ResponseEntity<Cart> addProductToCart(
-            @PathVariable Integer id,
-            @RequestBody CartItemDTO cartItemDTO) {
-        Cart cart = cartService.addProductToCart(id, cartItemDTO.getProductId(), cartItemDTO.getQuantity());
-        return ResponseEntity.ok(cart);
+        @Parameter(description = "ID del cliente",required = true)
+        @PathVariable Integer customerId,
+        @RequestBody CartItemDTO cartItemDTO) {
+               
+            Cart cart = cartService.addProductToCart(customerId, cartItemDTO.getProductId(), cartItemDTO.getQuantity());
+            return ResponseEntity.ok(cart);
     }
 
-    // Eliminar producto del carrito
+
+    //accion
     @DeleteMapping("/clientes/{customerId}/remove/{productId}")
+    //comentario
+    @Operation(
+        summary = "Eliminar producto del carrito",
+        description = "Elimina un producto (por su ID) del carrito del cliente indicado.")
+    //logica
     public ResponseEntity<Void> removeProductFromCart(
-            @PathVariable Integer customerId,
-            @PathVariable Integer productId) {
-        cartService.removeProduct(customerId, productId);
-        return ResponseEntity.ok().build();
+        @Parameter(description = "ID del cliente",required = true)
+        @PathVariable Integer customerId,
+        @Parameter(description = "ID del producto a eliminar",required = true)
+        @PathVariable Integer productId) {
+                
+            cartService.removeProduct(customerId, productId);
+            return ResponseEntity.ok().build();
     }
 
-    // Vaciar el carrito
+
+    //accion
     @DeleteMapping("/{customerId}/clear")
-    public ResponseEntity<Void> clearCart(@PathVariable Integer customerId) {
-        cartService.clearCart(customerId);
-        return ResponseEntity.ok().build();
+    //comentario
+    @Operation(
+        summary = "Vaciar el carrito",
+        description = "Elimina todos los productos del carrito del cliente, dejándolo vacío.")
+    //logica
+    public ResponseEntity<Void> clearCart(
+        @Parameter(description = "ID del cliente",required = true)
+        @PathVariable Integer customerId) {
+            
+            cartService.clearCart(customerId);
+            return ResponseEntity.ok().build();
     }
 }
 
